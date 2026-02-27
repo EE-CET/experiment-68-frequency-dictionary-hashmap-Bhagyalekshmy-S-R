@@ -7,17 +7,21 @@ public class Solution {
         Scanner scanner = new Scanner(System.in);
 
         String line = scanner.nextLine().trim();
-
         String[] words = line.split("\\s+");
 
-        HashMap<String, Integer> frequencyMap = new HashMap<>();
+        HashMap<String, Integer> map = new HashMap<>();
 
         for (String word : words) {
-            frequencyMap.put(word, frequencyMap.getOrDefault(word, 0) + 1);
+            map.put(word, map.getOrDefault(word, 0) + 1);
         }
 
-        for (Map.Entry<String, Integer> entry : frequencyMap.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
+        boolean first = true;
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            if (!first) {
+                System.out.print("\n");
+            }
+            System.out.print(entry.getKey() + ": " + entry.getValue());
+            first = false;
         }
 
         scanner.close();
