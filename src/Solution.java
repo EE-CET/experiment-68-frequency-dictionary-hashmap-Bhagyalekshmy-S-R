@@ -1,27 +1,23 @@
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.TreeMap;
 
 public class Solution {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         String line = scanner.nextLine().trim();
-        String[] words = line.split("\\s+");
+        HashMap<String, Integer> map = new HashMap<>();
 
-        TreeMap<String, Integer> map = new TreeMap<>();
-
-        for (String word : words) {
-            map.put(word, map.getOrDefault(word, 0) + 1);
+        if (!line.isEmpty()) {
+            String[] words = line.split("\\s+");
+            for (String word : words) {
+                map.put(word, map.getOrDefault(word, 0) + 1);
+            }
         }
 
-        boolean first = true;
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            if (!first) {
-                System.out.println();
-            }
-            System.out.print(entry.getKey() + ": " + entry.getValue());
-            first = false;
+            System.out.println(entry.getKey() + ": " + entry.getValue());
         }
 
         scanner.close();
